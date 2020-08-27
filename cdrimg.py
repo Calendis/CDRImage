@@ -9,7 +9,7 @@ from lib import SafePixelGetter
 DEBUG = False
 
 
-def check_input(args):
+def check_input():
     usage_msg = open("lib/USAGE.txt").read()
 
     if len(argv) not in range(4, 6):
@@ -21,6 +21,12 @@ def check_input(args):
         print("Error: invalid option")
         print(usage_msg)
         return False
+
+    elif argv[2] == "encode":
+        if len(argv) < 5:
+            print("Error: no output file specified")
+            print(usage_msg)
+            return False
 
     # Make sure the input file exists
     if not os.path.isfile(argv[1]):
@@ -42,7 +48,7 @@ def rgb_dist(c1, c2):
 
 def main(argv):
     if not DEBUG:
-        if not check_input(argv):
+        if not check_input():
             return
     else:
         argv.append("decode")
