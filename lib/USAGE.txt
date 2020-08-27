@@ -1,0 +1,2 @@
+Usage:
+    cdrimg.py <input_file> <encode [compression lvl] | decode> <output_file>
